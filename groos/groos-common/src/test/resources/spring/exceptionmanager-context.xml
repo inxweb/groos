@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xsi:schemaLocation="http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd
+    	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+
+	<bean id="exceptionManager" class="com.groos.common.exception.ExceptionHandler">
+		<property name="policyList">
+			<list>
+				<bean class="com.groos.common.exception.Policy">
+					<property name="id" value=""/>
+					<property name="exceptionTypeList">
+						<list>
+							<bean class="com.groos.common.exception.ExceptionType">
+								<property name="clazz">
+									<bean class="java.lang.Exception" />
+								</property>
+								<property name="exceptionHandlerList">
+									<list>
+										<bean></bean>
+										<bean></bean>
+										<bean></bean>
+										<bean></bean>
+										<bean></bean>
+									</list>
+								</property>
+								<property name="postHandlingAction">
+									<bean
+										class="com.groos.common.exception.PostHandlingAction.NotifyRethrow" />
+								</property>
+							</bean>
+						</list>
+					</property>
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+</beans>

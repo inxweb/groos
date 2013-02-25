@@ -1,0 +1,96 @@
+@CHARSET "UTF-8"; 
+body{ font: 12px dotum, Verdana; }
+
+a:link{color:#666; text-decoration:none;}
+a:visited{color:#666; text-decoration:none;}
+a:hover{color:#666; text-decoration:underline;}
+a:active{color:#666;}
+
+#wrap {width: 100%;}
+#content {width: 100%;}
+
+form { margin:0; padding:0;}
+ 
+input, label { vertical-align:middle;}
+ 
+table { border-collapse: collapse; table-layout: fixed;}
+
+.data-list {width: 100%;} 
+.data-list .data-list-header {height: 30px; padding: 5px 0;}
+.data-list .data-list-header-left  {width: 40%; float: left;}
+.data-list .data-list-header-right {width: 40%; float: right; text-align:right;} 
+.data-list .data-list-content table {width: 100%; border-top: 2px solid #006600; border-bottom: 2px solid #999; }
+.data-list .data-list-content table th {border: 1px solid #D2D2D2; border-bottom: 1px solid #6C7476; border-top: none; background-color: #F1F1F4; color: #333; padding: 5px;}
+.data-list .data-list-content table td {border: 1px solid #D2D2D2; padding: 4px;}
+.data-list .data-list-content table td.date {padding: 0; font-family: Tahoma; font-size: 11px; line-height: normal; color: #666;}
+.data-list .data-list-footer {width: 100%; height: 15px; padding: 5px 0;}
+.data-list .data-list-footer-left  {width: 40%; float: left;}
+.data-list .data-list-footer-right {width: 40%; float: right; text-align:right;}
+
+
+.data-form {width: 100%;} 
+.data-form .data-form-header {width: 100%; height: 30px; padding: 5px 0;}
+.data-form .data-form-content table {width: 100%; border-top: 2px solid #006600; border-bottom: 2px solid #999; }
+.data-form .data-form-content table th {border-top: 1px solid #999; border-bottom: 1px solid #999; background-color: #F1F1F4; color: #333; padding: 5px;}
+.data-form .data-form-content table td {border-bottom: 1px solid #999; padding: 4px; color: #666; background-color: #FFFFF;}
+.data-form .data-form-content table td.date {padding: 0; font-family: Tahoma; font-size: 11px; line-height: normal; color: #666;}
+.data-form .data-form-footer {width: 100%; height: 15px; padding: 5px 0;}
+.data-form .data-form-footer-left  {width: 40%; float: left;}
+.data-form .data-form-footer-right {width: 40%; float: right; text-align:right;}
+.data-form input, .data-form select, .data-form textarea {font-size: 12px;}
+
+.notify {}
+.notify .notify-info  {width: 100%; padding: 10px 5px; border: 2px solid #003366; background-color: #336699; font-weight: bold; color: #FFFFFF;}
+.notify .notify-error {width: 100%; padding: 10px 5px; border: 2px solid #FF9900; background-color: #FF0000; font-weight: bold; color: #FFFFFF;}
+
+.data-wrap {width: 100%; background-color: #F4F5E7; height: 1000px;}
+.data-wrap .data-wrap-left  {width: 50%; float: left;  background-color: #F4F5E7;}
+.data-wrap .data-wrap-center  {width: 1%; float: left;}
+.data-wrap .data-wrap-right {width: 49%; float: right; background-color: #F4F5E7;}
+
+.align-left   {text-align: left;} 
+.align-center {text-align: center;}
+.align-right  {text-align: right;}
+
+.width-10per  {width: 10%;}
+.width-20per  {width: 20%;}
+.width-30per  {width: 30%;}
+.width-40per  {width: 40%;}
+.width-50per  {width: 50%;}
+.width-60per  {width: 60%;}
+.width-70per  {width: 70%;}
+.width-80per  {width: 80%;}
+.width-90per  {width: 90%;}
+.width-100per {width: 100%;}
+
+a.button {
+	height: 20px;
+	background-color: #006600;
+    display:inline-block;
+    height:23px;
+    padding:0 0 0 3px; 
+    font-weight:bold;
+    color:#FFFFFF; 
+    white-space:nowrap;
+    border:none;
+    overflow:visible;
+    cursor:pointer;
+    text-decoration:none;  
+    border: 1px solid #338533;  
+}
+
+a.button span {
+    display:block;
+    height:23px;
+    padding:0 10px 0 8px;
+    line-height:23px; 	
+	
+}
+
+  a.button:hover, a.button:focus {
+    color:#14330A;
+    text-decoration:none;  
+    background-color: #338533;
+    border: 1px solid #C2FFAD;  
+  }
+  a.button:hover>span, a.button:focus>span {background-position:100% -30px;}

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nmhwork.dao.user.UserDao">
+	<!-- ================================================================================= -->
+	<!-- 1. ResultMap-->
+	<!-- ================================================================================= -->
+    <resultMap id="UserResultMap" type="com.nmhwork.domain.user.User" >
+        <result property="id"             column="USR_ID"         jdbcType="NUMERIC"/>
+        <result property="name"           column="USR_NM"         jdbcType="VARCHAR"/>
+        <result property="age"            column="USR_AGE"        jdbcType="NUMERIC"/> 
+        <result property="birthDate"      column="USR_BIR_DT"     jdbcType="DATE"/>
+        <result property="createDateTime" column="USR_CREATE_DT"  jdbcType="TIMESTAMP"/>
+        <result property="status.code"    column="USR_STA_CD"     jdbcType="VARCHAR"/>
+        <result property="status.value"   column="USR_STA_VAL"    jdbcType="VARCHAR"/>
+    </resultMap>
+	<!-- ================================================================================= -->
+	<!-- 2. SqlFragment -->
+	<!-- ================================================================================= -->  
+    <sql id="idWhereClause">
+    WHERE USR_ID = #{id}
+    </sql>
+  	<!-- ================================================================================= -->
+	<!-- 3. GenericDao SQL-->
+	<!-- ================================================================================= -->   
+	<select id="selectById" parameterType="String" resultMap="UserResultMap">
+		SELECT  /* [user/user-mapper.xml] selectById */ USR_ID, USR_NM, USR_AGE, USR_BIR_DT, USR_CREATE_DT, USR_STA_CD, (SELECT CD_VAL FROM TBL_CD CD WHERE CD.CD_CD = USR.USR_STA_CD) AS USR_STA_VAL
+		FROM TBL_USR USR
+		<include refid="idWhereClause"/> 
+	</select>  
+	<select id="existsById" parameterType="String" resultType="Integer">
+		SELECT  /* [user/user-mapper.xml] existsById */ COUNT(*)
+		FROM TBL_USR USR
+		<include refid="idWhereClause"/> 
+	</select>  
+	<insert id="insert" parameterType="com.nmhwork.domain.user.User">
+		INSERT INTO TBL_USR /* [user/user-mapper.xml] insert */ 
+		(USR_ID, USR_NM, USR_AGE, USR_BIR_DT, USR_CREATE_DT, USR_STA_CD)
+		VALUES (#{id}, #{name}, #{age}, #{birthDate}, #{createDateTime}, #{status.code})
+	</insert> 
+	<update id="update" parameterType="com.nmhwork.domain.user.User">
+		UPDATE TBL_USR /* [user/user-mapper.xml] update */ 
+		SET USR_NM = #{name}, 
+			USR_AGE = #{age}, 
+			USR_BIR_DT = #{birthDate}, 
+			USR_CREATE_DT = #{createDateTime}, 
+			USR_STA_CD = #{status.code} 
+		<include refid="idWhereClause"/> 
+	</update>  
+	<update id="updateSelective" parameterType="com.nmhwork.domain.user.User">
+		UPDATE TBL_USR /* [user/user-mapper.xml] updateSelective */ 
+		<set>
+			<if test="name != null">USR_NM = #{name},</if>
+			<if test="age != null">USR_AGE = #{age},</if>
+			<if test="birthDate != null">USR_BIR_DT = #{birthDate},</if>
+			<if test="createDateTime != null">USR_CREATE_DT = #{createDateTime},</if>
+			<if test="status.code != null">USR_STA_CD = #{status.code}</if>
+		</set> 
+		<include refid="idWhereClause"/> 
+	</update> 
+	<delete id="deleteById" parameterType="String">
+		DELETE FROM TBL_USR /* [user/user-mapper.xml] deleteById */ <include refid="idWhereClause"/> 
+	</delete> 
+  	<!-- ================================================================================= -->
+	<!-- 4. Additaional SQL-->
+	<!-- ================================================================================= -->
+	 <select id="selectRowCount" parameterType="com.nmhwork.pagable.user.UserListPageRequest" resultType="Integer">
+		SELECT  /* [user/user-mapper.xml] selectById */ COUNT(*)
+		FROM TBL_USR USR 
+	</select>  
+	<select id="selectList" parameterType="com.nmhwork.pagable.user.UserListPageRequest" resultMap="UserResultMap">
+		SELECT  /* [user/user-mapper.xml] selectList */ LIMIT #{startRow} #{endRow}  USR_ID, USR_NM, USR_AGE, USR_BIR_DT, USR_CREATE_DT, USR_STA_CD, (SELECT CD_VAL FROM TBL_CD CD WHERE CD.CD_CD = USR.USR_STA_CD) AS USR_STA_VAL
+		FROM TBL_USR USR 
+	</select>  	
+</mapper>
